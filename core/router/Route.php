@@ -1,21 +1,20 @@
-<?php namespace framework\core\router;
+<?php namespace core\router;
 
 /**
  * ルーティングオブジェクト
  * @author kamekoopa
  */
-class core_router_Route {
+class Route {
 
 	/**
-	 * 実行するアクションクラスの名前
-	 * @var string
+	 * @var string 実行するアクションクラスの名前
 	 * @access private
 	 */
 	private $actionClassName;
 	
+	
 	/**
-	 * 実行するアクションクラスのメソッドの名前
-	 * @var string
+	 * @var string 実行するアクションクラスのメソッドの名前
 	 * @access private
 	 */
 	private $methodName;
@@ -23,23 +22,29 @@ class core_router_Route {
 	/**
 	 * コンストラクタ
 	 * 
-	 * @param string $actionClassName
-	 * @param string $methodName
+	 * @param string $actionClassName 実行するアクションクラスの名前
+	 * @param string $methodName 実行するアクションクラスのメソッドの名前
 	 */
 	public function __construct($actionClassName, $methodName){
 		$this->actionClassName = $actionClassName;
 		$this->methodName      = $methodName;
 	}
 	
+	
 	/**
-	 * Enter description here ...
+	 * 実行するアクションクラスの名前を返します
+	 * @access public
+	 * @return string 実行するアクションクラスの名前
 	 */
 	public function getActionClassName(){
 		return $this->actionClassName;
 	}
 
+	
 	/**
-	 * Enter description here ...
+	 * 実行するアクションクラスのメソッドの名前を返します。
+	 * @access public
+	 * @return string 実行するアクションクラスのメソッドの名前
 	 */
 	public function getMethodName(){
 		return $this->methodName;

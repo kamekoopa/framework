@@ -1,23 +1,23 @@
-<?php namespace framework\core\router;
+<?php namespace core\router;
 
-use framework\core\engine\core_engine_Request;
-use framework\core\router\core_router_IRouter;
+use \core\engine\Request;
+use \core\router\IRouter;
 
 /**
  * デフォルトルータ
  * @author kamekoopa
  */
-class core_router_DefaultRouter implements core_router_IRouter{
+class DefaultRouter implements IRouter{
 
 	/**
 	 * (non-PHPdoc)
-	 * @see core/router/framework\core\router.core_router_IRouter::getRoute()
+	 * @see core/router/core\router.IRouter::getRoute()
 	 */
-	public function getRoute(core_engine_Request $request){
+	public function getRoute(Request $request){
 		
 		$actionClass = "";
 		$method      = "";
 		
-		return new core_router_Route($actionClass, $method);
+		return new Route($actionClass, $method);
 	}
 }

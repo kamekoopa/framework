@@ -1,20 +1,20 @@
-<?php namespace framework\core\router;
+<?php namespace core\router;
 
-use framework\core\engine\core_engine_Request;
+use \core\engine\Request;
 
 /**
  * ルータインタフェース
  * @author kamekoopa
  */
-interface core_router_IRouter{
+interface IRouter{
 
 	/**
 	 * リクエスト情報からルーティングオブジェクトを生成します
 	 * @access public
 	 * 
-	 * @param framework\core\engine\core_engine_Request $request リクエストオブジェクト
+	 * @param \core\engine\Request $request リクエストオブジェクト
 	 * 
-	 * @return framework\core\router\core_router_Route ルーティング情報オブジェクト
+	 * @return \core\router\Route ルーティング情報オブジェクト
 	 */
-	public function getRoute(core_engine_Request $request);
+	public function getRoute(Request $request);
 }
