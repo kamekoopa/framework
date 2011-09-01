@@ -1,25 +1,27 @@
-<?php namespace framework\core\engine;
+<?php namespace core\engine;
 
 /**
- * 
+ *
  * @author kamekoopa
  */
-interface core_engine_IEngine {
+interface IEngine {
 
 	/**
 	 * リクエストオブジェクトを生成します。
-	 * 
+	 *
 	 * @access public
-	 * 
-	 * @return
+	 *
+	 * @return \core\engine\Request リクエストオブジェクト
 	 */
 	public function getRequest();
-	
-	
+
+
 	/**
 	 * レスポンスを送信します。
-	 * 
-	 * @access public 
+	 *
+	 * @access public
+	 *
+	 * @return void
 	 */
 	public function sendResponse();
 }

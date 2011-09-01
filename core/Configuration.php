@@ -1,50 +1,59 @@
-<?php namespace framework\core;
+<?php namespace core;
 
-use framework\core\router\core_router_IRouter;
+use router\IRouter;
 
-use framework\core\engine\core_engine_IEngine;
+use engine\IEngine;
+
 
 /**
  * 設定クラス
- * 
+ *
  * @author kamekoopa
  */
-class core_Configure {
+class Configuration {
 
 	/**
-	 * @var framework\core\core_Configure このクラスの唯一のインスタンス
+	 * @access private
+	 * @static
+	 * @var \core\Configuration このクラスの唯一のインスタンス
 	 */
 	private static $me = null;
-	
+
 	/**
+	 * @access private
 	 * @var string コントローラークラスの存在するディレクトリ
 	 */
 	private $controllerDir;
-	
+
+
 	/**
+	 * @access private
 	 * @var string ビューテンプレートが存在するディレクトリ
 	 */
 	private $viewDir;
-	
+
 	/**
-	 * @var framework\core\engine\core_engine_IEngine 使用するエンジンクラス 
+	 * @access private
+	 * @var \core\engine\IEngine 使用するエンジンクラス
 	 */
 	private $engine;
-	
+
 	/**
-	 * @var framework\core\router\core_router_IRouter 使用するルータオブジェクト
+	 * @access private
+	 * @var \core\router\IRouter 使用するルータクラス
 	 */
 	private $router;
 
-	
+
 	/**
 	 * コンストラクタ(非公開)
 	 * @access private
-	 * 
+	 *
  	 * @param string $controllerDir コントローラークラスのディレクトリ
 	 * @param string $viewDir テンプレートが存在するディレクトリ
 	 */
 	private function __construct($controllerDir, $viewDir){
+
 		$this->controllerDir = $controllerDir;
 		$this->viewDir = $viewDir;
 	}
@@ -52,120 +61,106 @@ class core_Configure {
 
 	/**
 	 * 設定クラスの唯一のインスタンスを取得します
-	 * 
-	 * @return framework\core\core_Configure このクラスのインスタンス
+	 *
+	 * @access public
+	 * @static
+	 *
+	 * @return \core\Configuration このクラスのインスタンス
 	 */
 	public static function getInstance($controllerDir, $viewDir){
 
 		if(self::$me == null){
 			self::$me = new self($controllerDir, $viewDir);
 		}
-		
+
 		return self::$me;
 	}
-	
-	
-	/**
-	 * フレームワークが設置されている場所をフルパスで返します。
-	 * 
-	 * @return string フレームワークの設置されているディレクトリパス
-	 */
-	public function getFwRootDir(){
-		return "";
-	}
+
 
 	/**
 	 * アプリのコントローラークラスの存在するディレクトリを返します。
 	 * @access public
-	 * 
+	 *
 	 * @return string コントローラークラスの存在するディレクトリ
 	 */
 	public function getControllerDir(){
+		return $this->controllerDir;
 	}
-	
+
 	/**
 	 * アプリのビューテンプレートが存在するディレクトリを返します。
 	 * @access public
-	 * 
+	 *
 	 * @return string ビューテンプレートの存在するディレクトリ
 	 */
 	public function getViewDir(){
+		return $this->viewDir;
 	}
-	
+
+
 	/**
 	 * 設定されているエンジンクラスを返します
-	 * 
+	 *
 	 * @access public
-	 * 
-	 * @return framework\core\engine\core_engine_IEngine 設定されているエンジンクラス
+	 *
+	 * @return \core\engine\IEngine 設定されているエンジンクラス
 	 */
 	public function getEngine(){
+		return $this->engine;
 	}
-	
+
+
 	/**
 	 * このフレームワークで使用するエンジンクラスを設定します。
-	 * 
+	 *
 	 * @access public
-	 * 
-	 * @param framework\core\engine\core_engine_IEngine $engine
-	 * 
-	 * @return framework\core\core_Configure このクラスのインスタンス
+	 *
+	 * @param \core\engine\IEngine 使用するエンジンクラス
+	 *
+	 * @return \core\Configuration このクラスのインスタンス
 	 */
-	public function setEngine(core_engine_IEngine $engine){
-		
+	public function setEngine(IEngine $engine){
+
 		$this->engine = $engine;
-		
+
 		return $this;
 	}
-	
-	
+
+
 	/**
 	 * このフレームワークで使用するルータを取得します。
-	 * 
+	 *
 	 * @access public
-	 * 
-	 * @return framework\core\router\core_router_IRouter ルータオブジェクト
+	 *
+	 * @return \core\router\IRouter ルータオブジェクト
 	 */
 	public function getRouter(){
 		return $this->router;
 	}
-	
+
+
 	/**
 	 * このフレームワークで使用するルータを設定します。
 	 * @access public
-	 * 
-	 * @param framework\core\router\core_router_IRouter ルータオブジェクト
-	 * 
-	 * @return framework\core\core_Configure このクラスのインスタンス
+	 *
+	 * @param \core\router\IRouter ルータオブジェクト
+	 *
+	 * @return \core\Configuration このクラスのインスタンス
 	 */
-	public function setRouter(core_router_IRouter $router){
-		
+	public function setRouter(IRouter $router){
+
 		$this->router = $router;
-		
+
 		return $this;
 	}
-	
-	
+
+
 	public function getLogger(){
 	}
-	
-	
+
+
 	public function setLogger(){
-	
-		return $this;
-	}
-	
-	
-	public function addIncludePath($path){
-	
-		return $this;
-	}
-	
-	
-	public function addAutoLoader($function){
-		
-		spl_autoload_register($function);
-		
+
 		return $this;
 	}
 }

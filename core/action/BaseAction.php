@@ -1,6 +1,6 @@
-<?php namespace framework\core\action;
+<?php namespace \core\action;
 
-abstract class core_action_BaseAction{
+abstract class BaseAction{
 
 
 

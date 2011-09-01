@@ -1,9 +1,12 @@
-<?php namespace framework\core\engine;
+<?php namespace core\engine;
+
 
 /**
+ *
  * @author kamekoopa
  */
-class core_engine_ApacheEngine implements core_engine_IEngine{
+class ApacheEngine implements IEngine{
+
 
 	/**
 	 * コンストラクタ
@@ -12,32 +15,33 @@ class core_engine_ApacheEngine implements core_engine_IEngine{
 		ob_start();
 	}
 
+
 	/**
 	 * (non-PHPdoc)
-	 * @see core/engine/framework\core\engine.core_engine_IEngine::getRequest()
+	 * @see \core\engine.IEngine::getRequest()
 	 */
 	public function getRequest(){
-		
-		return new core_engine_Response();
+
+		return new Response();
 	}
-	
-	
+
+
 	/**
 	 * (non-PHPdoc)
-	 * @see core/engine/framework\core\engine.core_engine_IEngine::sendResponse()
+	 * @see \core\engine.IEngine::sendResponse()
 	 */
-	public function sendResponse(core_engine_Response $response){
+	public function sendResponse(Response $response){
 
 		//ヘッダ出力
 		foreach($response->getResponseHeaders() as $headerName => $headerValue){
 			header("{$headerName}: {$headerValue}", true, $response->getHttpStatus());
 		}
-		
+
 		//出力バッファflush
 		for($i=0; $i < ob_get_level(); $i++){
 			ob_end_flush();
 		}
-		
+
 		//レスポンス出力
 		echo $response->getResponseBody();
 	}

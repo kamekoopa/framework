@@ -1,21 +1,21 @@
-<?php namespace framework\core\engine;
+<?php namespace core\engine;
 
 /**
  * レスポンスオブジェクト
- * 
+ *
  * @author kamekoopa
  */
-class core_engine_Response {
+class Response {
 
 	public function __construct(){
 	}
-	
+
 	public function getHttpStatus(){
 	}
-	
+
 	public function getResponseHeaders(){
 	}
-	
+
 	public function getResponseBody(){
 	}
 }
