@@ -1,6 +1,6 @@
 <?php namespace framework\core\dispatcher;
 
-use framework\core\core_Configure;
+use framework\core\core_Configuration;
 
 use framework\core\engine\core_engine_Response;
 use framework\core\engine\core_engine_Request;
@@ -13,7 +13,7 @@ use framework\core\router\core_router_Route;
 class core_dispatcher_Dispatcher {
 
 	/**
-	 * @var framework\core\core_Configure 設定オブジェクト
+	 * @var framework\core\core_Configuration 設定オブジェクト
 	 */
 	private $config;
 	
@@ -31,11 +31,11 @@ class core_dispatcher_Dispatcher {
 	 * コンストラクタ
 	 * @access public
 	 * 
-	 * @param framework\core\core_Configure 設定オブジェクト
+	 * @param framework\core\core_Configuration 設定オブジェクト
 	 * @param framework\core\router\core_router_Route ルーティング情報オブジェクト
 	 * @param framework\core\engine\core_engine_Request リクエストオブジェクト
 	 */
-	public function __construct(core_Configure $config, core_router_Route $route, core_engine_Request $request){
+	public function __construct(core_Configuration $config, core_router_Route $route, core_engine_Request $request){
 		
 		$this->config = $config;
 		$this->route = $route;

@@ -9,10 +9,10 @@ use framework\core\engine\core_engine_IEngine;
  * 
  * @author kamekoopa
  */
-class core_Configure {
+class core_Configuration {
 
 	/**
-	 * @var framework\core\core_Configure このクラスの唯一のインスタンス
+	 * @var framework\core\core_Configuration このクラスの唯一のインスタンス
 	 */
 	private static $me = null;
 	
@@ -53,7 +53,7 @@ class core_Configure {
 	/**
 	 * 設定クラスの唯一のインスタンスを取得します
 	 * 
-	 * @return framework\core\core_Configure このクラスのインスタンス
+	 * @return framework\core\core_Configuration このクラスのインスタンス
 	 */
 	public static function getInstance($controllerDir, $viewDir){
 
@@ -109,7 +109,7 @@ class core_Configure {
 	 * 
 	 * @param framework\core\engine\core_engine_IEngine $engine
 	 * 
-	 * @return framework\core\core_Configure このクラスのインスタンス
+	 * @return framework\core\core_Configuration このクラスのインスタンス
 	 */
 	public function setEngine(core_engine_IEngine $engine){
 		
@@ -136,7 +136,7 @@ class core_Configure {
 	 * 
 	 * @param framework\core\router\core_router_IRouter ルータオブジェクト
 	 * 
-	 * @return framework\core\core_Configure このクラスのインスタンス
+	 * @return framework\core\core_Configuration このクラスのインスタンス
 	 */
 	public function setRouter(core_router_IRouter $router){
 		
