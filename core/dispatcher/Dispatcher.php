@@ -1,57 +1,63 @@
-<?php namespace framework\core\dispatcher;
+<?php namespace core\dispatcher;
 
-use framework\core\core_Configuration;
+use \core\Configuration;
 
-use framework\core\engine\core_engine_Response;
-use framework\core\engine\core_engine_Request;
-use framework\core\router\core_router_Route;
+use \core\engine\Response;
+use \core\engine\Request;
+
+use \core\router\Route;
+
 
 /**
  * アクションディスパッチャ
  * @author kamekoopa
  */
-class core_dispatcher_Dispatcher {
+class Dispatcher {
 
 	/**
-	 * @var framework\core\core_Configuration 設定オブジェクト
+	 * @access private
+	 * @var \core\Configuration 設定オブジェクト
 	 */
 	private $config;
-	
+
 	/**
-	 * @var framework\core\router\core_router_Route ルーティング情報オブジェクト
+	 * @access private
+	 * @var \core\router\Route ルーティング情報オブジェクト
 	 */
 	private $route;
-	
+
 	/**
-	 * @var framework\core\engine\core_engine_Request リクエストオブジェクト
+	 * @access private
+	 * @var \core\engine\Request リクエストオブジェクト
 	 */
 	private $request;
-	
+
+
 	/**
 	 * コンストラクタ
 	 * @access public
-	 * 
-	 * @param framework\core\core_Configuration 設定オブジェクト
-	 * @param framework\core\router\core_router_Route ルーティング情報オブジェクト
-	 * @param framework\core\engine\core_engine_Request リクエストオブジェクト
+	 *
+	 * @param \core\Configuration 設定オブジェクト
+	 * @param \core\router\Route ルーティング情報オブジェクト
+	 * @param \core\engine\Request リクエストオブジェクト
 	 */
-	public function __construct(core_Configuration $config, core_router_Route $route, core_engine_Request $request){
-		
-		$this->config = $config;
-		$this->route = $route;
+	public function __construct(Configuration $config, Route $route, Request $request){
+
+		$this->config  = $config;
+		$this->route   = $route;
 		$this->request = $request;
 	}
-	
-	
+
+
 	/**
 	 * 設定されている情報をもとにアクションクラスへ処理をディスパッチします。
-	 * 
+	 *
 	 * @access public
-	 * 
-	 * @return framework\core\engine\core_engine_Response レスポンスオブジェクト
+	 *
+	 * @return \core\engine\Response レスポンスオブジェクト
 	 */
 	public function dispatch(){
-		
-		return new core_engine_Response();
+
+		return new Response();
 	}
 }

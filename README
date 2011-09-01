@@ -1,0 +1,19 @@
+勉強用自作フレームワーク
+
+使い方イメージ
+(まだ動かない)
+
+1.
+	include_pathにフレームワークのルートディレクトリを追加
+
+2.
+	require_once 'MyFwAutoLoader.php';
+	MyFwAutoLoader::register("/framework/root/dir/");
+
+	する。
+
+3.
+
+	\core\Framework::getInstance()->fire();
+
+	する。
