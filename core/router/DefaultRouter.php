@@ -1,6 +1,7 @@
 <?php namespace core\router;
 
 use \core\engine\Request;
+use \core\exception\FrameworkException;
 use \core\router\IRouter;
 
 /**
@@ -14,10 +15,16 @@ class DefaultRouter implements IRouter{
 	 * @see core/router/core\router.IRouter::getRoute()
 	 */
 	public function getRoute(Request $request){
-		
-		$actionClass = "";
-		$method      = "";
-		
+
+		$param = $request->getQueryArray();
+
+		if( empty($param["c"]) || empty($param["m"]) ){
+			throw new FrameworkException(404, "parameter is not enough for routing.");
+		}
+
+		$actionClass = ucfirst($param["c"]) . "Controller";
+		$method      = $param["m"];
+
 		return new Route($actionClass, $method);
 	}
 }
