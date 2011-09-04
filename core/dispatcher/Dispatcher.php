@@ -57,7 +57,7 @@ class Dispatcher {
 	 * @return \core\engine\Response レスポンスオブジェクト
 	 */
 	public function dispatch(){
-
+		
 		$nextRoute = $this->route;
 
 		do {
@@ -65,7 +65,7 @@ class Dispatcher {
 			$actionClassName = $route->getActionClassName();
 			$methodName      = $route->getMethodName();
 
-			$controller = new {$actionClassName}($this->request, $config->getGenerator());
+			$controller = new $actionClassName($this->request, $this->config->getGenerator());
 			$nextRoute = $controller->{$methodName}($this->request);
 
 		}while($nextRoute != null);
