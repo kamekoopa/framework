@@ -1,12 +1,12 @@
 <?php namespace core;
 
-use Configuration;
+use core\Configuration;
 
-use dispatcher\Dispatcher;
+use core\dispatcher\Dispatcher;
 
-use engine\ApacheEngine;
+use core\engine\ApacheEngine;
 
-use router\DefaultRouter;
+use core\router\DefaultRouter;
 
 
 /**

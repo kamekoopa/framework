@@ -1,8 +1,8 @@
 <?php namespace core;
 
-use router\IRouter;
+use core\router\IRouter;
 
-use engine\IEngine;
+use core\engine\IEngine;
 
 
 /**

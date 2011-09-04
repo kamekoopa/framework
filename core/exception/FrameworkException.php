@@ -1,11 +1,11 @@
-<?php namespace core\expcetion;
+<?php namespace core\exception;
 
 /**
  * フレームワークの基本例外
  *
  * @author kmaitani
  */
-class FrameworkException extends Exception{
+class FrameworkException extends \Exception{
 
 
 	/**
