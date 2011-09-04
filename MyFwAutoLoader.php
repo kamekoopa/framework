@@ -24,7 +24,7 @@ class MyFwAutoLoader {
 		$function = function($className) use ($includePath){
 
 			$classFileName = $includePath . str_replace("\\", "/", $className) . ".php";
-			echo $classFileName . "\r\n";
+
 			if( is_readable($classFileName) ){
 				require_once $classFileName;
 			}else{
