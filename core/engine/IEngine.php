@@ -20,8 +20,10 @@ interface IEngine {
 	 * レスポンスを送信します。
 	 *
 	 * @access public
+	 * 
+	 * @param \core\engine\Response レスポンスオブジェクト
 	 *
 	 * @return void
 	 */
-	public function sendResponse();
+	public function sendResponse(Response $response);
 }
