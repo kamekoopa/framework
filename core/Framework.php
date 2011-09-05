@@ -34,14 +34,14 @@ class Framework {
 	 * コンストラクタ
 	 * @access private
 	 *
-	 * @param string $controllerDir コントローラークラスのディレクトリ
-	 * @param string $viewDir テンプレートが存在するディレクトリ
+	 * @param string $appRootDir ウェブアプリのルートディレクトリ
 	 */
-	private function __construct($controllerDir, $viewDir){
+	private function __construct($appRootDir){
 
-		$this->config = Configuration::getInstance($controllerDir, $viewDir)
+		$this->config = Configuration::getInstance($appRootDir)
 			->setEngine(new ApacheEngine())
 			->setRouter(new DefaultRouter())
+			->setGenerator(new SmartyGenerator())
 		;
 	}
 
@@ -51,15 +51,14 @@ class Framework {
 	 * @access public
 	 * @static
 	 *
-	 * @param string $controllerDir コントローラークラスのディレクトリ
-	 * @param string $viewDir テンプレートが存在するディレクトリ
+	 * @param string $appRootDir ウェブアプリのルートディレクトリ
 	 *
 	 * @return core\Framework このクラスの唯一のインスタンス
 	 */
-	public static function getInstance($controllerDir, $viewDir){
+	public static function getInstance($appRootDir){
 
 		if(self::$me == null){
-			self::$me = new self($controllerDir, $viewDir);
+			self::$me = new self($appRootDir);
 		}
 
 		return self::$me;

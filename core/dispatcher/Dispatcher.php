@@ -58,6 +58,19 @@ class Dispatcher {
 	 */
 	public function dispatch(){
 
-		return new Response();
+		$nextRoute = $this->route;
+
+		do {
+
+			$actionClassName = $route->getActionClassName();
+			$methodName      = $route->getMethodName();
+
+			$controller = new {$actionClassName}($this->request, $config->getGenerator());
+			$nextRoute = $controller->{$methodName}($this->request);
+
+		}while($nextRoute != null);
+
+
+		return $this->config->getGenerator()->generate(200);
 	}
 }

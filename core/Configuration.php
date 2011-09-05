@@ -21,9 +21,9 @@ class Configuration {
 
 	/**
 	 * @access private
-	 * @var string コントローラークラスの存在するディレクトリ
+	 * @var string ウェブアプリのルートディレクトリ
 	 */
-	private $controllerDir;
+	private $appRootDir;
 
 
 	/**
@@ -44,18 +44,22 @@ class Configuration {
 	 */
 	private $router;
 
+	/**
+	 * @access private
+	 * @var \core\generator\AbstractGenerator 使用するジェネレータクラス
+	 */
+	private $generator;
+
 
 	/**
 	 * コンストラクタ(非公開)
 	 * @access private
 	 *
- 	 * @param string $controllerDir コントローラークラスのディレクトリ
-	 * @param string $viewDir テンプレートが存在するディレクトリ
+ 	 * @param string $appRootDir ウェブアプリのルートディレクトリ
 	 */
-	private function __construct($controllerDir, $viewDir){
+	private function __construct($appRootDir){
 
-		$this->controllerDir = $controllerDir;
-		$this->viewDir = $viewDir;
+		$this->appRootDir = $appRootDir;
 	}
 
 
@@ -65,12 +69,14 @@ class Configuration {
 	 * @access public
 	 * @static
 	 *
+	 * @param string $appRootDir ウェブアプリのルートディレクトリ
+	 *
 	 * @return \core\Configuration このクラスのインスタンス
 	 */
-	public static function getInstance($controllerDir, $viewDir){
+	public static function getInstance($appRootDir){
 
 		if(self::$me == null){
-			self::$me = new self($controllerDir, $viewDir);
+			self::$me = new self($appRootDir);
 		}
 
 		return self::$me;
@@ -78,23 +84,14 @@ class Configuration {
 
 
 	/**
-	 * アプリのコントローラークラスの存在するディレクトリを返します。
+	 * ウェブアプリのルートディレクトリを取得します。
+	 *
 	 * @access public
 	 *
-	 * @return string コントローラークラスの存在するディレクトリ
+	 * @return string ウェブアプリのルートディレクトリ
 	 */
-	public function getControllerDir(){
-		return $this->controllerDir;
-	}
-
-	/**
-	 * アプリのビューテンプレートが存在するディレクトリを返します。
-	 * @access public
-	 *
-	 * @return string ビューテンプレートの存在するディレクトリ
-	 */
-	public function getViewDir(){
-		return $this->viewDir;
+	public function getAppRootDir(){
+		return $this->appRootDir;
 	}
 
 
@@ -150,6 +147,35 @@ class Configuration {
 	public function setRouter(IRouter $router){
 
 		$this->router = $router;
+
+		return $this;
+	}
+
+
+
+	/**
+	 * このフレームワークで使用するジェネレータを取得します。
+	 *
+	 * @access public
+	 *
+	 * @return \core\generator\AbstractGenerator ジェネレータオブジェクト
+	 */
+	public function getGenerator(){
+		return $this->generator;
+	}
+
+
+	/**
+	 * このフレームワークで使用するジェネレータを設定します。
+	 * @access public
+	 *
+	 * @param \core\generator\AbstractGenerator ジェネレータオブジェクト
+	 *
+	 * @return \core\Configuration このクラスのインスタンス
+	 */
+	public function setGenerator(AbstractGenerator $generator){
+
+		$this->generator = $generator;
 
 		return $this;
 	}
