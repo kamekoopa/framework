@@ -22,7 +22,7 @@ class DefaultRouter implements IRouter{
 			throw new FrameworkException(404, "parameter is not enough for routing.");
 		}
 
-		$actionClass = "\\" . ucfirst($param["c"]) . "Controller";
+		$actionClass = "\\controllers\\" . ucfirst($param["c"]) . "Controller";
 		$method      = $param["m"];
 
 		return new Route($actionClass, $method);
