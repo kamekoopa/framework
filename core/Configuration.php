@@ -4,6 +4,8 @@ use core\router\IRouter;
 
 use core\engine\IEngine;
 
+use core\generator\AbstractGenerator;
+
 
 /**
  * 設定クラス

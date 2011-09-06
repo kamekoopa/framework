@@ -62,8 +62,8 @@ class Dispatcher {
 
 		do {
 
-			$actionClassName = $route->getActionClassName();
-			$methodName      = $route->getMethodName();
+			$actionClassName = $nextRoute->getActionClassName();
+			$methodName      = $nextRoute->getMethodName();
 
 			$controller = new $actionClassName($this->request, $this->config->getGenerator());
 			$nextRoute = $controller->{$methodName}($this->request);

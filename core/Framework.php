@@ -6,6 +6,8 @@ use core\dispatcher\Dispatcher;
 
 use core\engine\ApacheEngine;
 
+use core\generator\SmartyGenerator;
+
 use core\router\DefaultRouter;
 
 
@@ -38,10 +40,11 @@ class Framework {
 	 */
 	private function __construct($appRootDir){
 
-		$this->config = Configuration::getInstance($appRootDir)
+		$this->config = Configuration::getInstance($appRootDir);
+		$this->config
 			->setEngine(new ApacheEngine())
 			->setRouter(new DefaultRouter())
-			->setGenerator(new SmartyGenerator())
+			->setGenerator(new SmartyGenerator($this->config))
 		;
 	}
 
