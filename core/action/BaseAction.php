@@ -99,7 +99,7 @@ abstract class BaseAction{
 	 *
 	 * @return void
 	 */
-	protected function setTemplatePath($path){
-		$this->generator->setTemplatePath($path);
+	protected function setTemplateFile($path){
+		$this->generator->setTemplateFile($path);
 	}
 }
