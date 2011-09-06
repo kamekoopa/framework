@@ -49,7 +49,7 @@ class SmartyGenerator extends AbstractGenerator{
 	 */
 	protected function createResponseBody(){
 
-		return $smarty->fetch($this->templateFile);
+		return $this->smarty->fetch($this->templateFile);
 	}
 
 
@@ -69,7 +69,7 @@ class SmartyGenerator extends AbstractGenerator{
 
 		$viewDir = $config->getAppRootDir() . "views/";
 
-		$smarty->template_dir = $viewDir . 'templates/';
+		$smarty->template_dir = $viewDir . '/';
 		$smarty->compile_dir  = $viewDir . 'templates_c/';
 		$smarty->config_dir   = $viewDir . 'configs/';
 		$smarty->cache_dir    = $viewDir . 'cache/';
