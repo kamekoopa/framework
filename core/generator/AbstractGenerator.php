@@ -86,7 +86,7 @@ abstract class AbstractGenerator {
 
 		$responseBody = $this->createResponseBody();
 
-		foreach($this->outputFilters() as $outputFilter){
+		foreach($this->outputFilters as $outputFilter){
 			$responseBody = $outputFilter->filterOutput($responseBody);
 		}
 
