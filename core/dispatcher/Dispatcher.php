@@ -1,15 +1,16 @@
 <?php namespace core\dispatcher;
 
 use \core\Configuration;
-
 use \core\engine\Response;
 use \core\engine\Request;
-
 use \core\router\Route;
 
 
 /**
- * アクションディスパッチャ
+ * 指定されたルーティング情報を元に
+ * 実際に実行するアクションクラスへ処理をディスパッチします。
+ *
+ *
  * @author kamekoopa
  */
 class Dispatcher {
@@ -22,19 +23,20 @@ class Dispatcher {
 
 	/**
 	 * @access private
-	 * @var \core\router\Route ルーティング情報オブジェクト
+	 * @var \core\router\Route ディスパッチに利用するルーティング情報オブジェクト
 	 */
 	private $route;
 
 	/**
 	 * @access private
-	 * @var \core\engine\Request リクエストオブジェクト
+	 * @var \core\engine\Request アクションクラスへフィードするリクエストオブジェクト
 	 */
 	private $request;
 
 
 	/**
 	 * コンストラクタ
+	 *
 	 * @access public
 	 *
 	 * @param \core\Configuration 設定オブジェクト
@@ -54,10 +56,10 @@ class Dispatcher {
 	 *
 	 * @access public
 	 *
-	 * @return \core\engine\Response レスポンスオブジェクト
+	 * @return \core\engine\Response 処理の結果としてクライアントに送出するレスポンスオブジェクト
 	 */
 	public function dispatch(){
-		
+
 		$nextRoute = $this->route;
 
 		do {

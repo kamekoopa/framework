@@ -5,7 +5,11 @@ use \core\exception\FrameworkException;
 use \core\router\IRouter;
 
 /**
- * デフォルトルータ
+ * フレームワークがデフォルトで利用するルータです。
+ * クエリパラメータにc=user&m=listで指定された場合
+ * \controllers\UserController::list()メソッドが実行されるように設定された
+ * ルーティング情報オブジェクトを返します。
+ *
  * @author kamekoopa
  */
 class DefaultRouter implements IRouter{

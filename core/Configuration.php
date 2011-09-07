@@ -1,14 +1,12 @@
 <?php namespace core;
 
 use core\router\IRouter;
-
 use core\engine\IEngine;
-
 use core\generator\AbstractGenerator;
 
 
 /**
- * 設定クラス
+ * フレームワークの動作に必要な設定を表すクラスです
  *
  * @author kamekoopa
  */
@@ -26,7 +24,6 @@ class Configuration {
 	 * @var string ウェブアプリのルートディレクトリ
 	 */
 	private $appRootDir;
-
 
 	/**
 	 * @access private
@@ -140,6 +137,7 @@ class Configuration {
 
 	/**
 	 * このフレームワークで使用するルータを設定します。
+	 *
 	 * @access public
 	 *
 	 * @param \core\router\IRouter ルータオブジェクト
@@ -169,6 +167,7 @@ class Configuration {
 
 	/**
 	 * このフレームワークで使用するジェネレータを設定します。
+	 *
 	 * @access public
 	 *
 	 * @param \core\generator\AbstractGenerator ジェネレータオブジェクト

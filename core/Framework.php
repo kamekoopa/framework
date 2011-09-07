@@ -1,18 +1,26 @@
 <?php namespace core;
 
 use core\Configuration;
-
 use core\dispatcher\Dispatcher;
-
 use core\engine\ApacheEngine;
-
 use core\generator\SmartyGenerator;
-
 use core\router\DefaultRouter;
 
 
 /**
- * フレームワーク
+ * フレームワークの始点となるクラスです。
+ * アプリケーションのエントリーポイントで、このクラスにアプリのルートディレクトリを与えて構築し
+ * fire()メソッドを実行することでこのフレームワークを起動することが出来ます。
+ *
+ * このフレームワークは大きく
+ * ・サーバとのドライバとなるエンジンクラス
+ * ・リクエスト情報を元に実行するアクションクラスとメソッドを決定するルーティングクラス
+ * ・テンプレートエンジンとのアダプタとなるジェネレータクラス
+ * から構成されており
+ * これらはフレームワークが持つインタフェース、または抽象クラスの実装クラスを用意することで
+ * 変更することが出来ます。
+ * 特に設定しない場合はフレームワークが用意したデフォルトのものが利用されます。
+ *
  *
  * @author kamekoopa
  */
@@ -84,6 +92,8 @@ class Framework {
 	 * 現在の設定でフレームワークを起動します
 	 *
 	 * @access public
+	 *
+	 * @return void
 	 */
 	public function fire(){
 

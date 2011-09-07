@@ -2,16 +2,18 @@
 
 use \core\Configuration;
 
+
 /**
- * Smartyジェネレータ
+ * テンプレートエンジンとしてSmartyを利用するように実装されたジェネレータです。
  *
  * @author kamekoopa
  */
 class SmartyGenerator extends AbstractGenerator{
 
+
 	/**
 	 * @access protected
-	 * @var \Smarty
+	 * @var \Smarty Smartyのインスタンス
 	 */
 	protected $smarty;
 
@@ -21,7 +23,7 @@ class SmartyGenerator extends AbstractGenerator{
 	 *
 	 * @access public
 	 *
-	 * @param \core\Configuration $config
+	 * @param \core\Configuration $config このジェネレータが利用する設定クラス
 	 */
 	public function __construct(Configuration $config){
 		$this->smarty = self::createSmartyInstance($config);
@@ -29,12 +31,8 @@ class SmartyGenerator extends AbstractGenerator{
 
 
 	/**
-	 * @access public
-	 *
-	 * @param string $key
-	 * @param mixed  $value
-	 *
-	 * @return void
+	 * (non-PHPdoc)
+	 * @see core/generator/core\generator.AbstractGenerator::assign()
 	 */
 	public function assign($key, $value) {
 		$this->smarty->assign($key, $value);
@@ -42,24 +40,23 @@ class SmartyGenerator extends AbstractGenerator{
 
 
 	/**
-	 *
-	 * @access public
-	 *
-	 * @return string
+	 * (non-PHPdoc)
+	 * @see core/generator/core\generator.AbstractGenerator::createResponseBody()
 	 */
 	protected function createResponseBody(){
-
 		return $this->smarty->fetch($this->templateFile);
 	}
 
 
 	/**
+	 * Smartyのインスタンスを作成します。
+	 *
 	 * @access private
 	 * @static
 	 *
-	 * @param \core\Configuration $config
+	 * @param \core\Configuration $config Smarty構築に利用する設定オブジェクト
 	 *
-	 * @return \Smary
+	 * @return \Smary 生成されたSmartyオブジェクト
 	 */
 	private static function createSmartyInstance(Configuration $config){
 

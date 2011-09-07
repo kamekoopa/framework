@@ -1,13 +1,15 @@
 <?php namespace core\engine;
 
+
 /**
+ * サーバとのドライバとなるエンジンクラスが実装スべきインタフェースです
  *
  * @author kamekoopa
  */
 interface IEngine {
 
 	/**
-	 * リクエストオブジェクトを生成します。
+	 * サーバプログラムとのAPIを利用してリクエストオブジェクトを生成します。
 	 *
 	 * @access public
 	 *
@@ -17,10 +19,10 @@ interface IEngine {
 
 
 	/**
-	 * レスポンスを送信します。
+	 * サーバプログラムとのAPIを利用してレスポンスを送信します。
 	 *
 	 * @access public
-	 * 
+	 *
 	 * @param \core\engine\Response レスポンスオブジェクト
 	 *
 	 * @return void

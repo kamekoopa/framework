@@ -1,7 +1,8 @@
 <?php namespace core\engine;
 
 /**
- * リクエストオブジェクト
+ * クライアントからのリクエスト情報を表す
+ * リクエストオブジェクトです。
  *
  * @author kamekoopa
  */
